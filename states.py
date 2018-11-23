@@ -11,5 +11,3 @@ def main_menu_state(message, user, is_entry=False):
     else:
         pass
     return False, ''
-
-hui
