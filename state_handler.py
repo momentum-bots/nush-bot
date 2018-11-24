@@ -1,7 +1,10 @@
 from database import User
 from states import *
 
-states = {'main_menu_state': main_menu_state}
+states = {'main_menu_state': main_menu_state,
+          'ask_question_mon_state': ask_question_mon_state,
+          'excursion_state': excursion_state
+          }
 
 
 def get_state_and_process(message, user: User, is_entry=False):
