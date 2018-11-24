@@ -36,4 +36,3 @@ def excursion_state(message, user, is_entry=False):
         if message.text == DICTIONARY['ua']['back_button']:
             return True, 'main_menu_state'
     return False, ''
-                       # photo=open('Sova.jpg', 'rb'),
