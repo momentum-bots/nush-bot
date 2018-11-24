@@ -23,4 +23,5 @@ def get_excursion_button_keyboard(language='ua'):
     keyboard.add(DICTIONARY[language]['excursion_1_1'])
     keyboard.add(DICTIONARY[language]['excursion_1_2'])
     keyboard.add(DICTIONARY[language]['excursion_1_3'])
+    keyboard.add(DICTIONARY[language]['back_button'])
     return keyboard
