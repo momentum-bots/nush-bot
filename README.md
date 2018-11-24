@@ -13,4 +13,6 @@ DATABASE_NAME = 'nush-bot'
 
 DATABASE_LOGIN = 'user'
 DATABASE_PASSWORD = 'nush12345'
+
+TOM_TOM_API_KEY = 'uC48PNN4uwlkk45jkYTblWc2kss7CQKWVmE'
 ```
