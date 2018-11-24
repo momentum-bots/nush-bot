@@ -3,6 +3,7 @@ from states import *
 
 states = {'choose_status_state': choose_status_state,
           'parents_state': parents_state,
+          'parents_without_children_state': parents_without_children_state,
           'teachers_state': teachers_state,
           'upgrade_qualification_state': upgrade_qualification_state,
           'mon_state': mon_state,

@@ -36,7 +36,25 @@ def parents_state(message, user, is_entry=False):
         if message.text == DICTIONARY['ua']['is_children_button']:
             return True, 'parents_state'
         elif message.text == DICTIONARY['ua']['no_children_button']:
-            return True, 'teachers_state'
+            return True, 'parents_without_children_state'
+        else:
+            bot.send_message(message.chat.id,
+                             DICTIONARY['ua']['no_button'])
+    return False, ''
+
+
+def parents_without_children_state(message, user, is_entry=False):
+    if is_entry:
+        bot.send_message(message.chat.id,
+                         DICTIONARY['ua']['parents_without_children_msg'],
+                         reply_markup=get_parents_without_children_keyboard('ua'))
+    else:
+        if message.text == DICTIONARY['ua']['all_about_nush_btn']:
+            return True, 'parents_state'
+        elif message.text == DICTIONARY['ua']['excursion_button']:
+            return True, 'excursion_state'
+        elif message.text == DICTIONARY['ua']['choose_school_button']:
+            pass
         else:
             bot.send_message(message.chat.id,
                              DICTIONARY['ua']['no_button'])

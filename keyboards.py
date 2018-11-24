@@ -16,6 +16,33 @@ def get_parents_choose_keyboard(language='ua'):
     return keyboard
 
 
+# def get_parents_with_children_keyboard(language='ua'):
+#     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+#     keyboard.add(DICTIONARY[language]['excursion_1_1'])
+#     keyboard.add(DICTIONARY[language]['excursion_1_2'])
+#     keyboard.add(DICTIONARY[language]['excursion_1_3'])
+#     keyboard.add(DICTIONARY[language]['back_button'])
+#     return keyboard
+
+
+def get_parents_without_children_keyboard(language='ua'):
+    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    keyboard.add(DICTIONARY[language]['excursion_button'])
+    keyboard.add(DICTIONARY[language]['all_about_nush_btn'])
+    keyboard.add(types.KeyboardButton(text=DICTIONARY[language]['choose_school_button'], request_location=True))
+    keyboard.add(DICTIONARY[language]['back_button'])
+    return keyboard
+
+
+def get_excursion_button_keyboard(language='ua'):
+    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    keyboard.add(DICTIONARY[language]['excursion_1_1'])
+    keyboard.add(DICTIONARY[language]['excursion_1_2'])
+    keyboard.add(DICTIONARY[language]['excursion_1_3'])
+    keyboard.add(DICTIONARY[language]['back_button'])
+    return keyboard
+
+
 def get_teachers_choose_keyboard(language='ua'):
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     keyboard.add(DICTIONARY[language]['pilot_schools_button'])
@@ -46,12 +73,4 @@ def get_mon_keyboard(language='ua'):
 def get_ask_mon_keyboard(language='ua'):
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     keyboard.add(DICTIONARY[language]['back_button'])
-    return keyboard
-
-
-def get_excursion_button_keyboard(language='ua'):
-    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    keyboard.add(DICTIONARY[language]['excursion_1_1'])
-    keyboard.add(DICTIONARY[language]['excursion_1_2'])
-    keyboard.add(DICTIONARY[language]['excursion_1_3'])
     return keyboard

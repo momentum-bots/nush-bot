@@ -9,6 +9,15 @@ DICTIONARY = {
         'is_children_msg': 'Чи є у Вас дітки в першому класі?',
         'is_children_button': 'Так',
         'no_children_button': 'Ні',
+        'parents_with_children_msg': 'Добре, то Ви вже бачили НУШ в дії!',
+        'parents_without_children_msg': 'Тоді розповім тобі більше про НУШ!',
+        'all_about_nush_btn': 'Усе про НУШ',
+        'excursion_button': 'Екскурсія НУШ',
+        'choose_school_button': 'Найближча школа',
+        # excursion steps
+        'excursion_1_1': '1. Парта',
+        'excursion_1_2': '2. Вчитель',
+        'excursion_1_3': '3. Підручники',
         ###
         # teachers' buttons
         ###
@@ -54,17 +63,10 @@ DICTIONARY = {
                        ' - натисність сюди</a>',
         'rating_mon_question_btn': 'Рейтинг питань',
         'rating_mon_question_msg': 'Тут буде рейтинг питань.',
-        #
-        'choose_school_button': 'Найближча школа',
-        'excursion_button': 'Екскурсія НУШ',
-
 
 
         'back_button': '<- Назад',
         'no_button': 'Скористайтесь, будь-ласка, клавіатурою',
-        # excursion steps
-        'excursion_1_1': '1. Парта',
-        'excursion_1_2': '2. Учитель',
-        'excursion_1_3': '3. Учебники',
+
     },
 }
