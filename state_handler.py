@@ -1,8 +1,12 @@
 from database import User
 from states import *
 
-states = {'main_menu_state': main_menu_state,
-          'ask_question_mon_state': ask_question_mon_state,
+states = {'choose_status_state': choose_status_state,
+          'parents_state': parents_state,
+          'teachers_state': teachers_state,
+          'upgrade_qualification_state': upgrade_qualification_state,
+          'mon_state': mon_state,
+          'ask_mon_question_state': ask_mon_question_state,
           'excursion_state': excursion_state
           }
 
@@ -11,7 +15,7 @@ def get_state_and_process(message, user: User, is_entry=False):
     if user.state in states:
         change_state, state_to_change_name = states[user.state](message, user, is_entry)
     else:
-        user.state = 'main_menu_state'
+        user.state = 'choose_status_state'
         user.save()
         change_state, state_to_change_name = states[user.state](message, user, is_entry)
     if change_state:

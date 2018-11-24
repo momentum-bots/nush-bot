@@ -12,11 +12,13 @@ def send_welcome(message):
                         username=message.from_user.username,
                         first_name=message.from_user.first_name,
                         last_name=message.from_user.last_name,
-                        state='main_menu_state'
+                        state='choose_status_state'
                         )
             user.save()
         else:
-            user.update(state='main_menu_state')
+            user.state = 'choose_status_state'
+            user.save()
+            # user.update(state='choose_status_state')
         get_state_and_process(message, user, True)
     # except Exception as e:
     #     print(e)
@@ -31,7 +33,7 @@ def handle_message(message):
                         username=message.from_user.username,
                         first_name=message.from_user.first_name,
                         last_name=message.from_user.last_name,
-                        state='main_menu_state'
+                        state='choose_status_state'
                         )
             user.save()
         get_state_and_process(message, user)
