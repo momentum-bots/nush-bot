@@ -34,7 +34,7 @@ def handle_message(message):
                         state='main_menu_state'
                         )
             user.save()
-    #     get_state_and_process(message, user)
+        get_state_and_process(message, user)
     # except Exception as e:
     #     print(e)
 
