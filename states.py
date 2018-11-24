@@ -157,4 +157,3 @@ def excursion_state(message, user, is_entry=False):
             bot.send_message(message.chat.id,
                              DICTIONARY['ua']['no_button'])
     return False, ''
-                       # photo=open('Sova.jpg', 'rb'),

@@ -1,15 +1,11 @@
 from telebot import types
 from languages import DICTIONARY
 
+
 def get_choose_status_keyboard(language='ua'):
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     keyboard.add(DICTIONARY[language]['is_parents_button'])
     keyboard.add(DICTIONARY[language]['is_teachers_button'])
-    return keyboard
-
-
-def get_parents_choose_keyboard(language='ua'):
-    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     return keyboard
 
 

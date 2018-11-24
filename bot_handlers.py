@@ -1,6 +1,7 @@
 from bot_object import bot
 from database import User
 from state_handler import get_state_and_process
+from distance import get_closest_school
 
 
 @bot.message_handler(commands=['start'])
@@ -37,6 +38,28 @@ def handle_message(message):
                         )
             user.save()
         get_state_and_process(message, user)
+    # except Exception as e:
+    #     print(e)
+
+
+@bot.message_handler(content_types=['location'])
+def handle_location(message):
+    # try:
+        schools = get_closest_school(message.location.latitude, message.location.longitude)
+        if schools == []:
+            bot.send_message(message.chat.id,
+                             'Шкіл поблизу немає. Ви що, в лісі?')
+        else:
+            for school in schools:
+                print(school)
+                bot.send_location(message.chat.id,
+                                  school['position']['lat'],
+                                  school['position']['lon'])
+                bot.send_message(message.chat.id,
+                                 '{0}\nЗа адресою: {1}'.format(
+                                     school['poi']['name'],
+                                     school['address']['freeformAddress']
+                                 ))
     # except Exception as e:
     #     print(e)
 
