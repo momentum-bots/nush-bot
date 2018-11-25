@@ -5,6 +5,7 @@ connect(DATABASE_NAME, host=DATABASE_HOST, port=DATABASE_PORT, username=DATABASE
 print('Connected to {0}'.format(DATABASE_NAME))
 
 LANGUAGES = ['ua']
+ROLES = ['parent', 'teacher']
 
 
 class User(Document):
@@ -13,4 +14,5 @@ class User(Document):
     first_name = StringField()
     last_name = StringField()
     state = StringField()
+    role = StringField(choices=ROLES, default=ROLES[0])
     language = StringField(choices=LANGUAGES, default=LANGUAGES[0])

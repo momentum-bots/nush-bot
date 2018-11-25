@@ -16,13 +16,13 @@ def get_parents_choose_keyboard(language='ua'):
     return keyboard
 
 
-# def get_parents_with_children_keyboard(language='ua'):
-#     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-#     keyboard.add(DICTIONARY[language]['excursion_1_1'])
-#     keyboard.add(DICTIONARY[language]['excursion_1_2'])
-#     keyboard.add(DICTIONARY[language]['excursion_1_3'])
-#     keyboard.add(DICTIONARY[language]['back_button'])
-#     return keyboard
+def get_parents_with_children_keyboard(language='ua'):
+    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    keyboard.add(DICTIONARY[language]['olympiads_button'])
+    keyboard.add(DICTIONARY[language]['ask_mon_question_btn'])
+    keyboard.add(DICTIONARY[language]['rating_mon_question_btn'])
+    keyboard.add(DICTIONARY[language]['back_button'])
+    return keyboard
 
 
 def get_parents_without_children_keyboard(language='ua'):
@@ -38,6 +38,14 @@ def get_all_about_nush_keyboard(language='ua'):
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     keyboard.add(DICTIONARY[language]['concept_nush_btn'])
     keyboard.add(DICTIONARY[language]['thematic_sections_button'])
+    keyboard.add(DICTIONARY[language]['back_button'])
+    return keyboard
+
+
+def get_thematic_sections_keyboard(language='ua'):
+    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    keyboard.add(DICTIONARY[language]['theme_first_btn'])
+    keyboard.add(DICTIONARY[language]['theme_second_btn'])
     keyboard.add(DICTIONARY[language]['back_button'])
     return keyboard
 

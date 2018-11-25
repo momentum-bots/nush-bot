@@ -5,28 +5,32 @@ DICTIONARY = {
         ###
         # parents' buttons
         ###
-        'is_parents_button': 'Батьки',
+        'is_parents_button': '👨 Батьки 👩',
         'is_children_msg': 'Чи є у Вас дітки в першому класі?',
         'is_children_button': 'Так',
         'no_children_button': 'Ні',
         # parents with children
         'parents_with_children_msg': 'Добре, то Ви вже бачили НУШ в дії!',
+        'olympiads_button': 'Олімпіади та конкурси',
+        'olympiads_msg': 'Олімпіади та конкурси - <a href="https://vseosvita.ua/">тут</a>',
         # parents without children
         'parents_without_children_msg': 'Тоді розповім тобі більше про НУШ!',
-        'all_about_nush_btn': 'Усе про НУШ',
+        'all_about_nush_btn': 'ℹ️ Усе про НУШ',
         'all_about_nush_msg': 'Що саме Вас цікавить?',
         # all about nush steps
-        'concept_nush_btn': 'Загальна концепція НУШ',
+        'concept_nush_btn': '📄 Загальна концепція НУШ',
         'concept_video_msg': 'https://www.youtube.com/watch?v=uWPdRjpQMmo',
         'norma_docs_msg': 'Концептуальні засади Нової Української Школи - '
                           '<a href="http://nus.org.ua/wp-content/uploads/2017/07/konczepcziya.pdf">тут</a>',
-        'thematic_sections_button': 'Тематичні розділи',
+        'thematic_sections_button': '🔣 Тематичні розділи',
         'thematic_sections_msg': 'Супер! Тепер обери тему:',
-        'excursion_button': 'Екскурсія НУШ',
+        'theme_first_btn': 'Тема 1',
+        'theme_second_btn': 'Тема 2',
+        'excursion_button': '🖼 Екскурсія НУШ',
         'excursion_msg': 'Освітній простір — це трохи більше, ніж облаштування. Його головний принцип — те, що ми '
                          'бачимо в класі, має відображати події, які відбуваються, а також висвітлювати особливості '
                          'школярів та вчителів, які там навчаються і навчають.',
-        'choose_school_button': 'Найближча школа',
+        'choose_school_button': '🗺 Найближча школа',
         # excursion steps
         'excursion_1_button': '1. LEGO у початковій школі',
         'excursion_1_msg': 'Гра для дітей – це спосіб пізнання світу. У грі діти розвивають важливі компетентності, '
@@ -56,32 +60,32 @@ DICTIONARY = {
         ###
         # teachers' buttons
         ###
-        'is_teachers_button': 'Вчителі',
+        'is_teachers_button': '👨‍🏫 Вчителі 👩‍🏫',
         'useful_docs_msg': 'Я допоможу Вам знайти корисні матеріали',
         # pilot schools
-        'pilot_schools_button': 'Пілотні школи',
+        'pilot_schools_button': '📚 Пілотні школи',
         'pilot_nush_msg': 'Пілот НУШ - <a href="https://mon.gov.ua/ua/tag/pilot-nush">натисніть сюди</a>',
         'materials_for pilots_msg': 'Матеріали для пілотних класів - <a href="http://nus.org.ua/'
                                     'materialy-dlya-pilotnyh-klasiv/">тут</a>',
         # trade experiences
-        'trade_experiences_button': 'Обмін досвідом',
+        'trade_experiences_button': '👫 Обмін досвідом',
         'trade_experience_fb_group_msg': 'Група у Facebook для вчителів початкових класів - '
                                          '<a href="https://www.facebook.com/groups/844649238918653/?ref=br_rs">'
                                          'Вчитель вчителю, учням та батькам</a>',
         # upgrade qualification
-        'upgrade_qualification_button': 'Підвищення кваліфікації',
+        'upgrade_qualification_button': '📈 Підвищення кваліфікації',
         'upgrade_qualification_msg': 'У мене є дещо для Вас :)',
-        'lectures_button': 'Тренінги та лекції',
+        'lectures_button': '👨‍🏫 Тренінги та лекції',
         'lectures_msg': 'ОНЛАЙН-КУРС ДЛЯ ВЧИТЕЛІВ ПОЧАТКОВОЇ ШКОЛИ - '
                         '<a href="https://courses.ed-era.com/courses/course-v1:MON-EDERA-OSVITORIA+ST101+st101/about">'
                         'Записатись на курс</a>'
                         '\n\n<a href="http://nus.org.ua/affiche/">АФІША</a>',
-        'online_courses_button': 'Онлайн курси',
+        'online_courses_button': '🌐 Онлайн курси',
         'online_courses_msg': 'ОНЛАЙН-КУРС ДЛЯ ВЧИТЕЛІВ ПОЧАТКОВОЇ ШКОЛИ - '
                               '<a href="https://courses.ed-era.com/courses/course-v1:MON-EDERA-OSVITORIA+ST101+st101/'
                               'about">натисність сюди</a>',
         # better with facebook
-        'better_with_facebook_button': 'Найкраще з Facebook',
+        'better_with_facebook_button': '🆕 Найкраще з Facebook',
         'better_with_facebook_fb_group_msg': 'Група у Facebook '
                                              '<a href="https://www.facebook.com/%D0%9D%D1%83%D1%88-%D0%94%D0%BE'
                                              '%D0%BF%D0%BE%D0%BC%D0%BE%D0%B3%D0%B0-%D0%92%D1%87%D0%B8%D1%82'
@@ -100,7 +104,7 @@ DICTIONARY = {
         'rating_mon_question_msg': 'Тут буде рейтинг питань.',
 
 
-        'back_button': '<- Назад',
+        'back_button': '⬅️ Назад',
         'no_button': 'Скористайтесь, будь-ласка, клавіатурою',
 
     },

@@ -1,6 +1,7 @@
 from bot_object import bot
 from languages import DICTIONARY
 from keyboards import *
+from database import ROLES
 from time import sleep
 
 
@@ -15,8 +16,12 @@ def choose_status_state(message, user, is_entry=False):
                          reply_markup=get_choose_status_keyboard('ua'))
     else:
         if message.text == DICTIONARY['ua']['is_parents_button']:
+            user.role = ROLES[0]
+            user.save()
             return True, 'parents_state'
         elif message.text == DICTIONARY['ua']['is_teachers_button']:
+            user.role = ROLES[1]
+            user.save()
             return True, 'teachers_state'
         else:
             bot.send_message(message.chat.id,
@@ -34,7 +39,7 @@ def parents_state(message, user, is_entry=False):
                          reply_markup=get_parents_choose_keyboard('ua'))
     else:
         if message.text == DICTIONARY['ua']['is_children_button']:
-            return True, 'parents_state'
+            return True, 'parents_with_children_state'
         elif message.text == DICTIONARY['ua']['no_children_button']:
             return True, 'parents_without_children_state'
         else:
@@ -49,18 +54,22 @@ def parents_with_children_state(message, user, is_entry=False):
                          DICTIONARY['ua']['parents_with_children_msg'],
                          reply_markup=get_parents_with_children_keyboard('ua'))
     else:
-        pass
-        # if message.text == DICTIONARY['ua']['all_about_nush_btn']:
-        #     return True, 'all_about_nush_state'
-        # elif message.text == DICTIONARY['ua']['excursion_button']:
-        #     return True, 'excursion_state'
-        # elif message.text == DICTIONARY['ua']['choose_school_button']:
-        #     pass
-        # elif message.text == DICTIONARY['ua']['back_button']:
-        #     return True, 'parents_state'
-        # else:
-        #     bot.send_message(message.chat.id,
-        #                      DICTIONARY['ua']['no_button'])
+        if message.text == DICTIONARY['ua']['olympiads_button']:
+            bot.send_message(message.chat.id,
+                             DICTIONARY['ua']['olympiads_msg'],
+                             parse_mode="HTML",
+                             reply_markup=get_parents_with_children_keyboard('ua'))
+        elif message.text == DICTIONARY['ua']['ask_mon_question_btn']:
+            return True, 'ask_mon_question_state'
+        elif message.text == DICTIONARY['ua']['rating_mon_question_btn']:
+            bot.send_message(message.chat.id,
+                             DICTIONARY['ua']['rating_mon_question_msg'],
+                             reply_markup=get_parents_with_children_keyboard('ua'))
+        elif message.text == DICTIONARY['ua']['back_button']:
+            return True, 'parents_state'
+        else:
+            bot.send_message(message.chat.id,
+                             DICTIONARY['ua']['no_button'])
     return False, ''
 
 
@@ -90,24 +99,29 @@ def parents_without_children_state(message, user, is_entry=False):
 
 def universal_callback_query_handler(reply, user):
     if reply.data == DICTIONARY['ua']['excursion_1_button']:
-        bot.send_message(reply.from_user.id,
-                       DICTIONARY['ua']['excursion_1_msg'],
+        bot.send_photo(reply.from_user.id,
+                       photo=open('img/lego.jpg', 'rb'),
+                       caption=DICTIONARY['ua']['excursion_1_msg'],
                        reply_markup=get_inline_back_keyboard('ua'))
     elif reply.data == DICTIONARY['ua']['excursion_2_button']:
-        bot.send_message(reply.from_user.id,
-                       DICTIONARY['ua']['excursion_2_msg'],
+        bot.send_photo(reply.from_user.id,
+                       photo=open('img/party.jpg', 'rb'),
+                       caption=DICTIONARY['ua']['excursion_2_msg'],
                        reply_markup=get_inline_back_keyboard('ua'))
     elif reply.data == DICTIONARY['ua']['excursion_3_button']:
-        bot.send_message(reply.from_user.id,
-                       DICTIONARY['ua']['excursion_3_msg'],
+        bot.send_photo(reply.from_user.id,
+                       photo=open('img/vidpochynok.jpg', 'rb'),
+                       caption=DICTIONARY['ua']['excursion_3_msg'],
                        reply_markup=get_inline_back_keyboard('ua'))
     elif reply.data == DICTIONARY['ua']['excursion_4_button']:
-        bot.send_message(reply.from_user.id,
-                       DICTIONARY['ua']['excursion_4_msg'],
+        bot.send_photo(reply.from_user.id,
+                       photo=open('img/stendy.jpeg', 'rb'),
+                       caption=DICTIONARY['ua']['excursion_4_msg'],
                        reply_markup=get_inline_back_keyboard('ua'))
     elif reply.data == DICTIONARY['ua']['excursion_5_button']:
-        bot.send_message(reply.from_user.id,
-                       DICTIONARY['ua']['excursion_5_msg'],
+        bot.send_photo(reply.from_user.id,
+                       photo=open('img/drawing.jpg', 'rb'),
+                       caption=DICTIONARY['ua']['excursion_5_msg'],
                        reply_markup=get_inline_back_keyboard('ua'))
     elif reply.data == DICTIONARY['ua']['back_button']:
         bot.send_photo(reply.from_user.id,
@@ -124,8 +138,8 @@ def all_about_nush_state(message, user, is_entry=False):
                          reply_markup=get_all_about_nush_keyboard('ua'))
     else:
         if message.text == DICTIONARY['ua']['concept_nush_btn']:
-            bot.send_video(message.chat.id,
-                           video="https://www.youtube.com/watch?v=uWPdRjpQMmo",
+            bot.send_message(message.chat.id,
+                           "https://www.youtube.com/watch?v=uWPdRjpQMmo",
                            reply_markup=get_all_about_nush_keyboard('ua'))
             sleep(0.5)
             bot.send_message(message.chat.id,
@@ -133,7 +147,7 @@ def all_about_nush_state(message, user, is_entry=False):
                              parse_mode="HTML",
                              reply_markup=get_all_about_nush_keyboard('ua'))
         elif message.text == DICTIONARY['ua']['thematic_sections_button']:
-            return True, 'all_about_nush_state'
+            return True, 'thematic_sections_state'
         elif message.text == DICTIONARY['ua']['back_button']:
             return True, 'parents_without_children_state'
         else:
@@ -142,45 +156,31 @@ def all_about_nush_state(message, user, is_entry=False):
     return False, ''
 
 
-# def excursion_state(message, user, is_entry=False):
-#     if is_entry:
-#         bot.send_photo(message.chat.id,
-#                        photo=open('img/excursion.png', 'rb'),
-#                        caption=DICTIONARY['ua']['excursion_msg'],
-#                        reply_markup=get_excursion_button_keyboard('ua'))
-#     else:
-#         if message.text == DICTIONARY['ua']['excursion_1_button']:
-#             bot.send_message(message.chat.id,
-#                            DICTIONARY['ua']['excursion_1_msg'],
-#                            reply_markup=get_excursion_button_keyboard('ua'))
-#         elif message.text == DICTIONARY['ua']['excursion_2_button']:
-#             bot.send_message(message.chat.id,
-#                            DICTIONARY['ua']['excursion_2_msg'],
-#                            reply_markup=get_excursion_button_keyboard('ua'))
-#         elif message.text == DICTIONARY['ua']['excursion_3_button']:
-#             bot.send_message(message.chat.id,
-#                            DICTIONARY['ua']['excursion_3_msg'],
-#                            reply_markup=get_excursion_button_keyboard('ua'))
-#         elif message.text == DICTIONARY['ua']['excursion_4_button']:
-#             bot.send_message(message.chat.id,
-#                            DICTIONARY['ua']['excursion_4_msg'],
-#                            reply_markup=get_excursion_button_keyboard('ua'))
-#         elif message.text == DICTIONARY['ua']['excursion_5_button']:
-#             bot.send_message(message.chat.id,
-#                            DICTIONARY['ua']['excursion_5_msg'],
-#                            reply_markup=get_excursion_button_keyboard('ua'))
-#         elif message.text == DICTIONARY['ua']['back_button']:
-#             return True, 'parents_without_children_state'
-#         else:
-#             bot.send_message(message.chat.id,
-#                              DICTIONARY['ua']['no_button'])
-#     return False, ''
+def thematic_sections_state(message, user, is_entry=False):
+    if is_entry:
+        bot.send_message(message.chat.id,
+                         DICTIONARY['ua']['thematic_sections_msg'],
+                         reply_markup=get_thematic_sections_keyboard('ua'))
+    else:
+        if message.text == DICTIONARY['ua']['theme_first_btn']:
+            bot.send_message(message.chat.id,
+                             "В розробці :)",
+                             reply_markup=get_thematic_sections_keyboard('ua'))
+        if message.text == DICTIONARY['ua']['theme_second_btn']:
+            bot.send_message(message.chat.id,
+                             "В розробці :)",
+                             reply_markup=get_thematic_sections_keyboard('ua'))
+        elif message.text == DICTIONARY['ua']['back_button']:
+            return True, 'all_about_nush_state'
+        else:
+            bot.send_message(message.chat.id,
+                             DICTIONARY['ua']['no_button'])
+    return False, ''
 
 
-
-'''
+"""
 TEACHERS
-'''
+"""
 def teachers_state(message, user, is_entry=False):
     if is_entry:
         bot.send_message(message.chat.id,
@@ -275,5 +275,8 @@ def ask_mon_question_state(message, user, is_entry=False):
                          reply_markup=get_ask_mon_keyboard('ua'))
     else:
         if message.text == DICTIONARY['ua']['back_button']:
-            return True, 'mon_state'
+            if user.role == ROLES[0]:
+                return True, 'parents_with_children_state'
+            elif user.role == ROLES[1]:
+                return True, 'mon_state'
     return False, ''
