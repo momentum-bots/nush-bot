@@ -11,6 +11,8 @@ states = {'choose_status_state': choose_status_state,
           'upgrade_qualification_state': upgrade_qualification_state,
           'mon_state': mon_state,
           'ask_mon_question_state': ask_mon_question_state,
+          'question_confirmation_state': question_confirmation_state,
+          'rating_mon_question_state': rating_mon_question_state,
           }
 
 

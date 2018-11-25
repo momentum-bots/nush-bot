@@ -67,11 +67,25 @@ def parents_with_children_state(message, user, is_entry=False):
         elif message.text == DICTIONARY['ua']['ask_mon_question_btn']:
             return True, 'ask_mon_question_state'
         elif message.text == DICTIONARY['ua']['rating_mon_question_btn']:
-            bot.send_message(message.chat.id,
-                             DICTIONARY['ua']['rating_mon_question_msg'],
-                             reply_markup=get_parents_with_children_keyboard('ua'))
+            return True, 'rating_mon_question_state'
         elif message.text == DICTIONARY['ua']['back_button']:
             return True, 'parents_state'
+        else:
+            bot.send_message(message.chat.id,
+                             DICTIONARY['ua']['no_button'])
+    return False, ''
+
+
+def rating_mon_question_state(message, user, is_entry=False):
+    if is_entry:
+        for _question in Question.objects().order_by('rating'):
+            bot.send_message(message.chat.id,
+                             DICTIONARY['ua']['rated_questions_msg'].format(_question.text, _question.rating),
+                             parse_mode="Markdown",
+                             reply_markup=get_rating_mon_question_keyboard(_question.text ,'ua'))
+    else:
+        if message.text == DICTIONARY['ua']['back_button']:
+            return return_to_your_state(user)
         else:
             bot.send_message(message.chat.id,
                              DICTIONARY['ua']['no_button'])
@@ -94,8 +108,7 @@ def parents_without_children_state(message, user, is_entry=False):
         elif message.text == DICTIONARY['ua']['ask_mon_question_btn']:
             return True, 'ask_mon_question_state'
         elif message.text == DICTIONARY['ua']['rating_mon_question_btn']:
-            bot.send_message(message.chat.id,
-                             DICTIONARY['ua']['rating_mon_question_msg'])
+            return True, 'rating_mon_question_state'
         elif message.text == DICTIONARY['ua']['back_button']:
             return True, 'parents_state'
         else:
@@ -130,11 +143,24 @@ def universal_callback_query_handler(reply, user):
                        photo=open('img/drawing.jpg', 'rb'),
                        caption=DICTIONARY['ua']['excursion_5_msg'],
                        reply_markup=get_inline_back_keyboard('ua'))
+    # button for questions' rating
     elif reply.data == DICTIONARY['ua']['back_button']:
         bot.send_photo(reply.from_user.id,
                        photo=open('img/excursion.png', 'rb'),
                        caption=DICTIONARY['ua']['excursion_msg'],
                        reply_markup=get_excursion_button_keyboard('ua'))
+    else:
+        question = Question.objects(text=reply.data).first()
+        print(question)
+        if question is None:
+            pass
+        else:
+            if user.user_id not in question.subscribed_users:
+                question.subscribed_users.append(user.user_id)
+                question.rating += 1
+                question.save()
+            else:
+                bot.send_message(reply.from_user.id, "Ви вже підтримали це питання.")
     bot.answer_callback_query(reply.id)
 
 
@@ -265,9 +291,7 @@ def mon_state(message, user, is_entry=False):
                              parse_mode="HTML",
                              reply_markup=get_mon_keyboard('ua'))
         elif message.text == DICTIONARY['ua']['rating_mon_question_btn']:
-            bot.send_message(message.chat.id,
-                             DICTIONARY['ua']['rating_mon_question_msg'],
-                             reply_markup=get_mon_keyboard('ua'))
+            return True, 'rating_mon_question_state'
         elif message.text == DICTIONARY['ua']['back_button']:
                 return True, 'teachers_state'
         else:
@@ -284,11 +308,37 @@ def ask_mon_question_state(message, user, is_entry=False):
                          reply_markup=get_ask_mon_keyboard('ua'))
     else:
         if message.text == DICTIONARY['ua']['back_button']:
-            if user.role == ROLES[0]:
-                if user.with_child_in_school:
-                    return True, 'parents_with_children_state'
-                elif user.with_child_in_school is False:
-                    return True, 'parents_without_children_state'
-            elif user.role == ROLES[1]:
-                return True, 'mon_state'
+            return return_to_your_state(user)
+        else:
+            user.current_question = message.text
+            user.save()
+            return True, 'question_confirmation_state'
     return False, ''
+
+
+def question_confirmation_state(message, user, is_entry=False):
+    if is_entry:
+        bot.send_message(message.chat.id,
+                         DICTIONARY['ua']['question_confirmation_msg'] % user.current_question,
+                         parse_mode="Markdown",
+                         reply_markup=get_question_confirmation_keyboard('ua'))
+    else:
+        if message.text == DICTIONARY['ua']['question_confirmation_btn']:
+            question = Question(text=user.current_question,
+                                subscribed_users=[])
+            question.save()
+            bot.send_message(message.chat.id, "Дякуємо Вам за питання!")
+            return return_to_your_state(user)
+        elif message.text == DICTIONARY['ua']['question_decline_btn']:
+            return True, 'ask_mon_question_state'
+    return False, ''
+
+
+def return_to_your_state(user):
+    if user.role == ROLES[0]:
+        if user.with_child_in_school:
+            return True, 'parents_with_children_state'
+        elif user.with_child_in_school is False:
+            return True, 'parents_without_children_state'
+    elif user.role == ROLES[1]:
+        return True, 'mon_state'

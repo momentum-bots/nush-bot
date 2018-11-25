@@ -95,15 +95,17 @@ DICTIONARY = {
         'mon_msg': 'Можна почитати відповіді МОН або поставити своє питання.',
         'ask_mon_question_btn': '❓ Запитати',
         'ask_mon_question_msg': 'Запитайте шось.',
+        'question_confirmation_msg': '*Ваше питання:*\n\n%s',
+        'question_confirmation_btn': '✅ Підтвердити',
+        'question_decline_btn': '❌ Скасувати',
         'faq_mon_btn': 'FAQ',
         'faq_mon_msg': 'Відповідаємо на запитання. Робота в 2-му пілотному класі.'
                        '<a href="http://nus.org.ua/questions/vidpovidayemo-na-zapytannya-robota-v-2-mu-pilotnomu-'
                        'klasi/?fbclid=IwAR35EpzkYuIjXN5NWa0XeNdUPWJgT-xmbTp6s3A6b_qRtpDdu8KaVbdK9r4">'
                        ' - натисність сюди</a>',
         'rating_mon_question_btn': '📊 ТОП питань до МОН',
-        'rating_mon_question_msg': 'Тут буде рейтинг питань.',
-
-
+        'rated_questions_msg': '{0}\n\n_К-сть голосів: {1}_',
+        'vote_for_question_button': '👍 Підтримати',
         'back_button': '⬅️ Назад',
         'no_button': 'Скористайтесь, будь-ласка, клавіатурою',
         # other

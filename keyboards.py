@@ -73,6 +73,14 @@ def get_inline_back_keyboard(language='ua'):
                                             callback_data=DICTIONARY[language]['back_to_class_button']))
     return keyboard
 
+
+def get_rating_mon_question_keyboard(text_of_question: str, language='ua'):
+    keyboard = types.InlineKeyboardMarkup()
+    keyboard.add(types.InlineKeyboardButton(text=DICTIONARY[language]['vote_for_question_button'],
+                                            callback_data=text_of_question))
+    return keyboard
+
+
 def get_teachers_choose_keyboard(language='ua'):
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     keyboard.add(DICTIONARY[language]['pilot_schools_button'])
@@ -103,4 +111,11 @@ def get_mon_keyboard(language='ua'):
 def get_ask_mon_keyboard(language='ua'):
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     keyboard.add(DICTIONARY[language]['back_button'])
+    return keyboard
+
+
+def get_question_confirmation_keyboard(language='ua'):
+    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    keyboard.add(DICTIONARY[language]['question_confirmation_btn'])
+    keyboard.add(DICTIONARY[language]['question_decline_btn'])
     return keyboard
