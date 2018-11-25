@@ -34,11 +34,21 @@ def get_parents_without_children_keyboard(language='ua'):
     return keyboard
 
 
+def get_all_about_nush_keyboard(language='ua'):
+    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    keyboard.add(DICTIONARY[language]['concept_nush_btn'])
+    keyboard.add(DICTIONARY[language]['thematic_sections_button'])
+    keyboard.add(DICTIONARY[language]['back_button'])
+    return keyboard
+
+
 def get_excursion_button_keyboard(language='ua'):
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    keyboard.add(DICTIONARY[language]['excursion_1_1'])
-    keyboard.add(DICTIONARY[language]['excursion_1_2'])
-    keyboard.add(DICTIONARY[language]['excursion_1_3'])
+    keyboard.add(DICTIONARY[language]['excursion_1_button'])
+    keyboard.add(DICTIONARY[language]['excursion_2_button'])
+    keyboard.add(DICTIONARY[language]['excursion_3_button'])
+    keyboard.add(DICTIONARY[language]['excursion_4_button'])
+    keyboard.add(DICTIONARY[language]['excursion_5_button'])
     keyboard.add(DICTIONARY[language]['back_button'])
     return keyboard
 
