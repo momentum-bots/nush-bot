@@ -2,6 +2,7 @@ from bot_object import bot
 from database import User
 from state_handler import get_state_and_process, get_state_and_process_callback_query
 from distance import get_closest_school
+from languages import DICTIONARY
 
 
 @bot.callback_query_handler(func=lambda call: True)
@@ -65,15 +66,14 @@ def handle_location(message):
         schools = get_closest_school(message.location.latitude, message.location.longitude)
         if schools == []:
             bot.send_message(message.chat.id,
-                             'Шкіл поблизу немає. Ви що, в лісі?')
+                             DICTIONARY['ua']['no_schools_nearby_msg'])
         else:
             for school in schools:
-                print(school)
                 bot.send_location(message.chat.id,
                                   school['position']['lat'],
                                   school['position']['lon'])
                 bot.send_message(message.chat.id,
-                                 '{0}\nЗа адресою: {1}'.format(
+                                 DICTIONARY['ua']['school_nearby_msg'].format(
                                      school['poi']['name'],
                                      school['address']['freeformAddress']
                                  ))

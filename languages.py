@@ -106,6 +106,8 @@ DICTIONARY = {
 
         'back_button': '⬅️ Назад',
         'no_button': 'Скористайтесь, будь-ласка, клавіатурою',
-
+        # other
+        'no_schools_nearby_msg': 'Шкіл поблизу немає. Ви що, в лісі?',
+        'school_nearby_msg': '{0}\nЗа адресою: {1}'
     },
 }

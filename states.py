@@ -1,7 +1,7 @@
 from bot_object import bot
 from languages import DICTIONARY
 from keyboards import *
-from database import ROLES
+from database import Question, ROLES
 from time import sleep
 
 

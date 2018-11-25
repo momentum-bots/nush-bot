@@ -17,3 +17,8 @@ class User(Document):
     role = StringField(choices=ROLES, default=ROLES[0])
     with_child_in_school = BooleanField(default=False)
     language = StringField(choices=LANGUAGES, default=LANGUAGES[0])
+
+
+class Question(Document):
+    text = StringField(required=True)
+    rating = IntField(default=0)
