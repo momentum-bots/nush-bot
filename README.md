@@ -1,7 +1,7 @@
 # nush-bot
 Бот нової Української школи
 
-Для деплоя не забудьте створити `config.py` 
+Для деплоя не забудьте створити `config.py` !
 
 ```python
 BOT_TOKEN = '755801654:AAGuGo1KEBdwQcOXP3Wz-sCceZJrDxhLA6w'
