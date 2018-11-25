@@ -5,7 +5,6 @@ from database import ROLES
 from time import sleep
 
 
-
 def choose_status_state(message, user, is_entry=False):
     if is_entry:
         bot.send_message(message.chat.id,
@@ -32,6 +31,8 @@ def choose_status_state(message, user, is_entry=False):
 '''
 PARENTS
 '''
+
+
 def parents_state(message, user, is_entry=False):
     if is_entry:
         bot.send_message(message.chat.id,
@@ -39,8 +40,12 @@ def parents_state(message, user, is_entry=False):
                          reply_markup=get_parents_choose_keyboard('ua'))
     else:
         if message.text == DICTIONARY['ua']['is_children_button']:
+            user.with_child_in_school = True
+            user.save()
             return True, 'parents_with_children_state'
         elif message.text == DICTIONARY['ua']['no_children_button']:
+            user.with_child_in_school = False
+            user.save()
             return True, 'parents_without_children_state'
         else:
             bot.send_message(message.chat.id,
@@ -73,7 +78,6 @@ def parents_with_children_state(message, user, is_entry=False):
     return False, ''
 
 
-
 def parents_without_children_state(message, user, is_entry=False):
     if is_entry:
         bot.send_message(message.chat.id,
@@ -87,8 +91,11 @@ def parents_without_children_state(message, user, is_entry=False):
                            photo=open('img/excursion.png', 'rb'),
                            caption=DICTIONARY['ua']['excursion_msg'],
                            reply_markup=get_excursion_button_keyboard('ua'))
-        elif message.text == DICTIONARY['ua']['choose_school_button']:
-            pass
+        elif message.text == DICTIONARY['ua']['ask_mon_question_btn']:
+            return True, 'ask_mon_question_state'
+        elif message.text == DICTIONARY['ua']['rating_mon_question_btn']:
+            bot.send_message(message.chat.id,
+                             DICTIONARY['ua']['rating_mon_question_msg'])
         elif message.text == DICTIONARY['ua']['back_button']:
             return True, 'parents_state'
         else:
@@ -181,6 +188,8 @@ def thematic_sections_state(message, user, is_entry=False):
 """
 TEACHERS
 """
+
+
 def teachers_state(message, user, is_entry=False):
     if is_entry:
         bot.send_message(message.chat.id,
@@ -246,7 +255,7 @@ def mon_state(message, user, is_entry=False):
     if is_entry:
         bot.send_message(message.chat.id,
                          DICTIONARY['ua']['mon_msg'],
-                             reply_markup=get_mon_keyboard('ua'))
+                         reply_markup=get_mon_keyboard('ua'))
     else:
         if message.text == DICTIONARY['ua']['ask_mon_question_btn']:
             return True, 'ask_mon_question_state'
@@ -276,7 +285,10 @@ def ask_mon_question_state(message, user, is_entry=False):
     else:
         if message.text == DICTIONARY['ua']['back_button']:
             if user.role == ROLES[0]:
-                return True, 'parents_with_children_state'
+                if user.with_child_in_school:
+                    return True, 'parents_with_children_state'
+                elif user.with_child_in_school is False:
+                    return True, 'parents_without_children_state'
             elif user.role == ROLES[1]:
                 return True, 'mon_state'
     return False, ''

@@ -15,4 +15,5 @@ class User(Document):
     last_name = StringField()
     state = StringField()
     role = StringField(choices=ROLES, default=ROLES[0])
+    with_child_in_school = BooleanField(default=False)
     language = StringField(choices=LANGUAGES, default=LANGUAGES[0])

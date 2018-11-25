@@ -30,6 +30,8 @@ def get_parents_without_children_keyboard(language='ua'):
     keyboard.add(DICTIONARY[language]['excursion_button'])
     keyboard.add(DICTIONARY[language]['all_about_nush_btn'])
     keyboard.add(types.KeyboardButton(text=DICTIONARY[language]['choose_school_button'], request_location=True))
+    keyboard.add(DICTIONARY[language]['ask_mon_question_btn'])
+    keyboard.add(DICTIONARY[language]['rating_mon_question_btn'])
     keyboard.add(DICTIONARY[language]['back_button'])
     return keyboard
 
