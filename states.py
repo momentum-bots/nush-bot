@@ -78,6 +78,9 @@ def parents_with_children_state(message, user, is_entry=False):
 
 def rating_mon_question_state(message, user, is_entry=False):
     if is_entry:
+        bot.send_message(message.chat.id,
+                         "Список питань до МОН:",
+                         reply_markup=get_back_button_keyboard('ua'))
         for _question in Question.objects().order_by('rating'):
             bot.send_message(message.chat.id,
                              DICTIONARY['ua']['rated_questions_msg'].format(_question.text, _question.rating),

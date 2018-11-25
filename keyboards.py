@@ -119,3 +119,9 @@ def get_question_confirmation_keyboard(language='ua'):
     keyboard.add(DICTIONARY[language]['question_confirmation_btn'])
     keyboard.add(DICTIONARY[language]['question_decline_btn'])
     return keyboard
+
+
+def get_back_button_keyboard(language='ua'):
+    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    keyboard.add(DICTIONARY[language]['back_button'])
+    return keyboard
