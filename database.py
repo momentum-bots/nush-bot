@@ -21,6 +21,7 @@ class User(Document):
 
 
 class Question(Document):
+    question_id = SequenceField()
     text = StringField(required=True)
     rating = IntField(default=0)
     subscribed_users = ListField(IntField())

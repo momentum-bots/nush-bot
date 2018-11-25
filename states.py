@@ -85,7 +85,7 @@ def rating_mon_question_state(message, user, is_entry=False):
             bot.send_message(message.chat.id,
                              DICTIONARY['ua']['rated_questions_msg'].format(_question.text, _question.rating),
                              parse_mode="Markdown",
-                             reply_markup=get_rating_mon_question_keyboard(_question.text ,'ua'))
+                             reply_markup=get_rating_mon_question_keyboard(_question.question_id, 'ua'))
     else:
         if message.text == DICTIONARY['ua']['back_button']:
             return return_to_your_state(user)
@@ -146,6 +146,11 @@ def universal_callback_query_handler(reply, user):
                        photo=open('img/drawing.jpg', 'rb'),
                        caption=DICTIONARY['ua']['excursion_5_msg'],
                        reply_markup=get_inline_back_keyboard('ua'))
+    elif reply.data == DICTIONARY['ua']['back_to_class_button']:
+        bot.send_photo(reply.from_user.id,
+                       photo=open('img/excursion.png', 'rb'),
+                       caption=DICTIONARY['ua']['excursion_msg'],
+                       reply_markup=get_excursion_button_keyboard('ua'))
     # button for questions' rating
     elif reply.data == DICTIONARY['ua']['back_button']:
         bot.send_photo(reply.from_user.id,
@@ -153,8 +158,7 @@ def universal_callback_query_handler(reply, user):
                        caption=DICTIONARY['ua']['excursion_msg'],
                        reply_markup=get_excursion_button_keyboard('ua'))
     else:
-        question = Question.objects(text=reply.data).first()
-        print(question)
+        question = Question.objects(question_id=reply.data).first()
         if question is None:
             pass
         else:
