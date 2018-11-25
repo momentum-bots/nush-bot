@@ -7,7 +7,7 @@ from languages import DICTIONARY
 
 @bot.callback_query_handler(func=lambda call: True)
 def callback_inline(reply):
-    # try:
+    try:
         user = User.objects(user_id=reply.from_user.id).first()
         if user is None:
             user = User(user_id=reply.from_user.id,
@@ -18,13 +18,13 @@ def callback_inline(reply):
                         )
             user.save()
         get_state_and_process_callback_query(reply, user)
-    #except Exception as e:
-        #     print(e)
+    except Exception as e:
+            print(e)
 
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    # try:
+    try:
         user = User.objects(user_id=message.from_user.id).first()
         if user is None:
             user = User(user_id=message.from_user.id,
@@ -39,13 +39,13 @@ def send_welcome(message):
             user.save()
             # user.update(state='choose_status_state')
         get_state_and_process(message, user, True)
-    # except Exception as e:
-    #     print(e)
+    except Exception as e:
+        print(e)
 
 
 @bot.message_handler(func=lambda message: True)
 def handle_message(message):
-    # try:
+    try:
         user = User.objects(user_id=message.from_user.id).first()
         if user is None:
             user = User(user_id=message.from_user.id,
@@ -56,13 +56,13 @@ def handle_message(message):
                         )
             user.save()
         get_state_and_process(message, user)
-    # except Exception as e:
-    #     print(e)
+    except Exception as e:
+        print(e)
 
 
 @bot.message_handler(content_types=['location'])
 def handle_location(message):
-    # try:
+    try:
         schools = get_closest_school(message.location.latitude, message.location.longitude)
         if schools == []:
             bot.send_message(message.chat.id,
@@ -77,8 +77,8 @@ def handle_location(message):
                                      school['poi']['name'],
                                      school['address']['freeformAddress']
                                  ))
-    # except Exception as e:
-    #     print(e)
+    except Exception as e:
+        print(e)
 
 
 if __name__ == '__main__':
