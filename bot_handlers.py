@@ -1,7 +1,24 @@
 from bot_object import bot
 from database import User
-from state_handler import get_state_and_process
+from state_handler import get_state_and_process, get_state_and_process_callback_query
 from distance import get_closest_school
+
+
+@bot.callback_query_handler(func=lambda call: True)
+def callback_inline(reply):
+    # try:
+        user = User.objects(user_id=reply.from_user.id).first()
+        if user is None:
+            user = User(user_id=reply.from_user.id,
+                        username=reply.from_user.username,
+                        first_name=reply.from_user.first_name,
+                        last_name=reply.from_user.last_name,
+                        state='choose_status_state'
+                        )
+            user.save()
+        get_state_and_process_callback_query(reply, user)
+    #except Exception as e:
+        #     print(e)
 
 
 @bot.message_handler(commands=['start'])

@@ -43,15 +43,25 @@ def get_all_about_nush_keyboard(language='ua'):
 
 
 def get_excursion_button_keyboard(language='ua'):
-    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    keyboard.add(DICTIONARY[language]['excursion_1_button'])
-    keyboard.add(DICTIONARY[language]['excursion_2_button'])
-    keyboard.add(DICTIONARY[language]['excursion_3_button'])
-    keyboard.add(DICTIONARY[language]['excursion_4_button'])
-    keyboard.add(DICTIONARY[language]['excursion_5_button'])
-    keyboard.add(DICTIONARY[language]['back_button'])
+    keyboard = types.InlineKeyboardMarkup()
+    keyboard.add(types.InlineKeyboardButton(text=DICTIONARY[language]['excursion_1_button'],
+                                            callback_data=DICTIONARY[language]['excursion_1_button']))
+    keyboard.row(types.InlineKeyboardButton(text=DICTIONARY[language]['excursion_2_button'],
+                                            callback_data=DICTIONARY[language]['excursion_2_button']),
+                 types.InlineKeyboardButton(text=DICTIONARY[language]['excursion_3_button'],
+                                            callback_data=DICTIONARY[language]['excursion_3_button']))
+    keyboard.row(types.InlineKeyboardButton(text=DICTIONARY[language]['excursion_4_button'],
+                                            callback_data=DICTIONARY[language]['excursion_4_button']),
+                 types.InlineKeyboardButton(text=DICTIONARY[language]['excursion_5_button'],
+                                            callback_data=DICTIONARY[language]['excursion_5_button']))
     return keyboard
 
+
+def get_inline_back_keyboard(language='ua'):
+    keyboard = types.InlineKeyboardMarkup()
+    keyboard.add(types.InlineKeyboardButton(text=DICTIONARY[language]['back_to_class_button'],
+                                            callback_data=DICTIONARY[language]['back_to_class_button']))
+    return keyboard
 
 def get_teachers_choose_keyboard(language='ua'):
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)

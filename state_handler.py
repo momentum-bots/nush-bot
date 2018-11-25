@@ -10,8 +10,11 @@ states = {'choose_status_state': choose_status_state,
           'upgrade_qualification_state': upgrade_qualification_state,
           'mon_state': mon_state,
           'ask_mon_question_state': ask_mon_question_state,
-          'excursion_state': excursion_state
           }
+
+
+def get_state_and_process_callback_query(reply, user: User, is_entry=False):
+    universal_callback_query_handler(reply, user)
 
 
 def get_state_and_process(message, user: User, is_entry=False):

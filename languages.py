@@ -15,8 +15,11 @@ DICTIONARY = {
         'parents_without_children_msg': 'Тоді розповім тобі більше про НУШ!',
         'all_about_nush_btn': 'Усе про НУШ',
         'all_about_nush_msg': 'Що саме Вас цікавить?',
+        # all about nush steps
         'concept_nush_btn': 'Загальна концепція НУШ',
-        'concept_video_msg': 'video',
+        'concept_video_msg': 'https://www.youtube.com/watch?v=uWPdRjpQMmo',
+        'norma_docs_msg': 'Концептуальні засади Нової Української Школи - '
+                          '<a href="http://nus.org.ua/wp-content/uploads/2017/07/konczepcziya.pdf">тут</a>',
         'thematic_sections_button': 'Тематичні розділи',
         'thematic_sections_msg': 'Супер! Тепер обери тему:',
         'excursion_button': 'Екскурсія НУШ',
@@ -45,10 +48,11 @@ DICTIONARY = {
                            'прикладами бажаної  поведінки. «Я – схеми» будуть зберігатися протягом усього  року на '
                            'стендах і вчитель зможе постійно повертатися до них, коли необхідно повторити певні '
                            'моделі поведінки, або ж коли у  клас приходять нові учні. ',
-        'excursion_5_button': '5. Приладдя для художньої діяльності',
+        'excursion_5_button': '5. Приладдя для художньо діяльності',
         'excursion_5_msg': 'Клас “Нової Школи” передбачає приладдя для творчих занять: від фломастерів та альбомів '
                            'до полімерної глини та пластилін. Важливим елементом є динамічні виставки дитячих робіт, '
                            'які постійно поповнюються новими роботами.',
+        'back_to_class_button': 'Повернутись до класу',
         ###
         # teachers' buttons
         ###
