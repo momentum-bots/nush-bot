@@ -26,11 +26,27 @@ DICTIONARY = {
         'thematic_sections_msg': 'Супер! Тепер обери тему:',
         'theme_first_btn': 'Тема 1',
         'theme_second_btn': 'Тема 2',
+        'old_system_diff_btn': '🔄 Відмінності від старої системи',
+        'shortly_about_nush_btn': 'ℹ️ Коротко про НУШ',
         'excursion_button': '🖼 Екскурсія НУШ',
         'excursion_msg': 'Освітній простір — це трохи більше, ніж облаштування. Його головний принцип — те, що ми '
                          'бачимо в класі, має відображати події, які відбуваються, а також висвітлювати особливості '
                          'школярів та вчителів, які там навчаються і навчають.',
         'choose_school_button': '🗺 Найближча школа',
+        'thats_what_i_have_msg': 'Ось, що маю для вас:',
+        'video_content_btn': '🎥 Відео контент',
+        'photo_content_btn': '📷 Фото',
+        'article_content_btn': '📰 Статті',
+        'video_diff_msg': 'https://www.youtube.com/watch?v=wxkovBFFhMQ',
+        'photo_diff_msg': 'https://coggle-images.s3.amazonaws.com/'
+                          '5bf96e088146c4c9eb9ec3ac-d832f8cd-3ad3-4488-9388-3dd09c58a657.png',
+        'article_diff_msg': 'http://dostyp.com.ua/novini/'
+                            'liliia-grinievich-u-kropivnits-'
+                            'komu-rozpovila-chim-nova-shkola-vidrizniaiet-sia-vid-staroyi-foto-1',
+        'video_shortly_nush_msg': 'https://www.youtube.com/watch?v=evjc2AHAIYE',
+        'photo_shortly_nush_msg': 'https://coggle-images.s3.amazonaws.com/'
+                          '5bf96e088146c4c9eb9ec3ac-d832f8cd-3ad3-4488-9388-3dd09c58a657.png',
+        'article_shortly_nush_msg': 'http://nus.org.ua/about/',
         # excursion steps
         'excursion_1_button': '1. LEGO у початковій школі',
         'excursion_1_msg': 'Гра для дітей – це спосіб пізнання світу. У грі діти розвивають важливі компетентності, '

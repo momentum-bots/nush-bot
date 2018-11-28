@@ -24,7 +24,8 @@ def choose_status_state(message, user, is_entry=False):
             return True, 'teachers_state'
         else:
             bot.send_message(message.chat.id,
-                             DICTIONARY['ua']['no_button'])
+                             DICTIONARY['ua']['no_button'],
+                             reply_markup=get_choose_status_keyboard('ua'))
     return False, ''
 
 
@@ -49,7 +50,8 @@ def parents_state(message, user, is_entry=False):
             return True, 'parents_without_children_state'
         else:
             bot.send_message(message.chat.id,
-                             DICTIONARY['ua']['no_button'])
+                             DICTIONARY['ua']['no_button'],
+                             reply_markup=get_parents_choose_keyboard('ua'))
     return False, ''
 
 
@@ -72,7 +74,8 @@ def parents_with_children_state(message, user, is_entry=False):
             return True, 'parents_state'
         else:
             bot.send_message(message.chat.id,
-                             DICTIONARY['ua']['no_button'])
+                             DICTIONARY['ua']['no_button'],
+                             reply_markup=get_parents_with_children_keyboard('ua'))
     return False, ''
 
 
@@ -91,7 +94,8 @@ def rating_mon_question_state(message, user, is_entry=False):
             return return_to_your_state(user)
         else:
             bot.send_message(message.chat.id,
-                             DICTIONARY['ua']['no_button'])
+                             DICTIONARY['ua']['no_button'],
+                             reply_markup=get_back_button_keyboard('ua'))
     return False, ''
 
 
@@ -116,7 +120,8 @@ def parents_without_children_state(message, user, is_entry=False):
             return True, 'parents_state'
         else:
             bot.send_message(message.chat.id,
-                             DICTIONARY['ua']['no_button'])
+                             DICTIONARY['ua']['no_button'],
+                             reply_markup=get_parents_without_children_keyboard('ua'))
     return False, ''
 
 
@@ -179,8 +184,8 @@ def all_about_nush_state(message, user, is_entry=False):
     else:
         if message.text == DICTIONARY['ua']['concept_nush_btn']:
             bot.send_message(message.chat.id,
-                           "https://www.youtube.com/watch?v=uWPdRjpQMmo",
-                           reply_markup=get_all_about_nush_keyboard('ua'))
+                             "https://www.youtube.com/watch?v=uWPdRjpQMmo",
+                             reply_markup=get_all_about_nush_keyboard('ua'))
             sleep(0.5)
             bot.send_message(message.chat.id,
                              DICTIONARY['ua']['norma_docs_msg'],
@@ -192,7 +197,8 @@ def all_about_nush_state(message, user, is_entry=False):
             return True, 'parents_without_children_state'
         else:
             bot.send_message(message.chat.id,
-                             DICTIONARY['ua']['no_button'])
+                             DICTIONARY['ua']['no_button'],
+                             reply_markup=get_all_about_nush_keyboard('ua'))
     return False, ''
 
 
@@ -202,19 +208,64 @@ def thematic_sections_state(message, user, is_entry=False):
                          DICTIONARY['ua']['thematic_sections_msg'],
                          reply_markup=get_thematic_sections_keyboard('ua'))
     else:
-        if message.text == DICTIONARY['ua']['theme_first_btn']:
-            bot.send_message(message.chat.id,
-                             "В розробці :)",
-                             reply_markup=get_thematic_sections_keyboard('ua'))
-        if message.text == DICTIONARY['ua']['theme_second_btn']:
-            bot.send_message(message.chat.id,
-                             "В розробці :)",
-                             reply_markup=get_thematic_sections_keyboard('ua'))
+        if message.text == DICTIONARY['ua']['old_system_diff_btn']:
+            return True, 'difference_with_old_system_state'
+        if message.text == DICTIONARY['ua']['shortly_about_nush_btn']:
+            return True, 'shortly_about_nush_state'
         elif message.text == DICTIONARY['ua']['back_button']:
             return True, 'all_about_nush_state'
         else:
             bot.send_message(message.chat.id,
-                             DICTIONARY['ua']['no_button'])
+                             DICTIONARY['ua']['no_button'],
+                             reply_markup=get_thematic_sections_keyboard('ua'))
+    return False, ''
+
+
+def difference_with_old_system_state(message, user, is_entry=False):
+    if is_entry:
+        bot.send_message(message.chat.id,
+                         DICTIONARY['ua']['thats_what_i_have_msg'],
+                         reply_markup=get_diff_with_old_system_keyboard('ua'))
+    else:
+        if message.text == DICTIONARY['ua']['video_content_btn']:
+            bot.send_message(message.chat.id,
+                             DICTIONARY['ua']['video_diff_msg'])
+        elif message.text == DICTIONARY['ua']['photo_content_btn']:
+            bot.send_photo(message.chat.id,
+                           photo=DICTIONARY['ua']['photo_diff_msg'])
+        elif message.text == DICTIONARY['ua']['article_content_btn']:
+            bot.send_message(message.chat.id,
+                             DICTIONARY['ua']['article_diff_msg'])
+        elif message.text == DICTIONARY['ua']['back_button']:
+            return True, 'thematic_sections_state'
+        else:
+            bot.send_message(message.chat.id,
+                             DICTIONARY['ua']['no_button'],
+                             reply_markup=get_thematic_sections_keyboard('ua'))
+    return False, ''
+
+
+def shortly_about_nush_state(message, user, is_entry=False):
+    if is_entry:
+        bot.send_message(message.chat.id,
+                         DICTIONARY['ua']['thats_what_i_have_msg'],
+                         reply_markup=get_diff_with_old_system_keyboard('ua'))
+    else:
+        if message.text == DICTIONARY['ua']['video_content_btn']:
+            bot.send_message(message.chat.id,
+                             DICTIONARY['ua']['video_shortly_nush_msg'])
+        elif message.text == DICTIONARY['ua']['photo_content_btn']:
+            bot.send_photo(message.chat.id,
+                           photo=DICTIONARY['ua']['photo_shortly_nush_msg'])
+        elif message.text == DICTIONARY['ua']['article_content_btn']:
+            bot.send_message(message.chat.id,
+                             DICTIONARY['ua']['article_shortly_nush_msg'])
+        elif message.text == DICTIONARY['ua']['back_button']:
+            return True, 'thematic_sections_state'
+        else:
+            bot.send_message(message.chat.id,
+                             DICTIONARY['ua']['no_button'],
+                             reply_markup=get_thematic_sections_keyboard('ua'))
     return False, ''
 
 
@@ -256,7 +307,8 @@ def teachers_state(message, user, is_entry=False):
             return True, 'mon_state'
         else:
             bot.send_message(message.chat.id,
-                             DICTIONARY['ua']['no_button'])
+                             DICTIONARY['ua']['no_button'],
+                             reply_markup=get_teachers_choose_keyboard('ua'))
     return False, ''
 
 
@@ -280,7 +332,8 @@ def upgrade_qualification_state(message, user, is_entry=False):
             return True, 'teachers_state'
         else:
             bot.send_message(message.chat.id,
-                             DICTIONARY['ua']['no_button'])
+                             DICTIONARY['ua']['no_button'],
+                             reply_markup=get_upgrade_qualification_keyboard('ua'))
     return False, ''
 
 
@@ -303,7 +356,8 @@ def mon_state(message, user, is_entry=False):
                 return True, 'teachers_state'
         else:
             bot.send_message(message.chat.id,
-                             DICTIONARY['ua']['no_button'])
+                             DICTIONARY['ua']['no_button'],
+                             reply_markup=get_mon_keyboard('ua'))
     return False, ''
 
 

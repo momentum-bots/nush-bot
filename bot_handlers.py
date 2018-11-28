@@ -64,7 +64,7 @@ def handle_message(message):
 def handle_location(message):
     try:
         schools = get_closest_school(message.location.latitude, message.location.longitude)
-        if schools == []:
+        if not schools:
             bot.send_message(message.chat.id,
                              DICTIONARY['ua']['no_schools_nearby_msg'])
         else:

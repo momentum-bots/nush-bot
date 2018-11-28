@@ -13,6 +13,8 @@ states = {'choose_status_state': choose_status_state,
           'ask_mon_question_state': ask_mon_question_state,
           'question_confirmation_state': question_confirmation_state,
           'rating_mon_question_state': rating_mon_question_state,
+          'difference_with_old_system_state': difference_with_old_system_state,
+          'shortly_about_nush_state': shortly_about_nush_state,
           }
 
 

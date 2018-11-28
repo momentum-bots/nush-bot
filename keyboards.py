@@ -46,8 +46,17 @@ def get_all_about_nush_keyboard(language='ua'):
 
 def get_thematic_sections_keyboard(language='ua'):
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    keyboard.add(DICTIONARY[language]['theme_first_btn'])
-    keyboard.add(DICTIONARY[language]['theme_second_btn'])
+    keyboard.add(DICTIONARY[language]['old_system_diff_btn'])
+    keyboard.add(DICTIONARY[language]['shortly_about_nush_btn'])
+    keyboard.add(DICTIONARY[language]['back_button'])
+    return keyboard
+
+
+def get_diff_with_old_system_keyboard(language='ua'):
+    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    keyboard.add(DICTIONARY[language]['video_content_btn'])
+    keyboard.add(DICTIONARY[language]['photo_content_btn'])
+    keyboard.add(DICTIONARY[language]['article_content_btn'])
     keyboard.add(DICTIONARY[language]['back_button'])
     return keyboard
 
