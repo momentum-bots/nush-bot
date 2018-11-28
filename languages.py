@@ -38,14 +38,12 @@ DICTIONARY = {
         'photo_content_btn': '📷 Фото',
         'article_content_btn': '📰 Статті',
         'video_diff_msg': 'https://www.youtube.com/watch?v=wxkovBFFhMQ',
-        'photo_diff_msg': 'https://coggle-images.s3.amazonaws.com/'
-                          '5bf96e088146c4c9eb9ec3ac-d832f8cd-3ad3-4488-9388-3dd09c58a657.png',
+        'photo_diff_msg': 'https://g.io.ua/img_aa/large/3773/93/37739322.jpg',
         'article_diff_msg': 'http://dostyp.com.ua/novini/'
                             'liliia-grinievich-u-kropivnits-'
                             'komu-rozpovila-chim-nova-shkola-vidrizniaiet-sia-vid-staroyi-foto-1',
         'video_shortly_nush_msg': 'https://www.youtube.com/watch?v=evjc2AHAIYE',
-        'photo_shortly_nush_msg': 'https://coggle-images.s3.amazonaws.com/'
-                          '5bf96e088146c4c9eb9ec3ac-d832f8cd-3ad3-4488-9388-3dd09c58a657.png',
+        'photo_shortly_nush_msg': 'https://g.io.ua/img_aa/large/3773/93/37739327.jpg',
         'article_shortly_nush_msg': 'http://nus.org.ua/about/',
         # excursion steps
         'excursion_1_button': '1. LEGO у початковій школі',
